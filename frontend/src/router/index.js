@@ -11,8 +11,13 @@ const router = createRouter({
     },
     {
       path: '/tasks',
-      name: 'anonimo',
+      name: 'tareas',
       component: () => import('../views/taskView.vue'),
+    },
+    {
+      path: '/history',
+      name: 'historial',
+      component: () => import('../views/historialView.vue'),
     },
   ],
 });
