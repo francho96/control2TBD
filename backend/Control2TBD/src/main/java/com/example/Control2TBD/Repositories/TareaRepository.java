@@ -11,4 +11,5 @@ public interface TareaRepository {
     public List<TareaModel> getAll();
     public String updateEstado(TareaModel tarea, Integer id_tarea);
     public List<TareaModel> buscarTareas(String estado, String palabraClave);
+    public List<TareaModel> getAllByUsuario(Integer id_usuario);
 }

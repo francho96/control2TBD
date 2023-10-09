@@ -87,7 +87,17 @@ public class TareaRepositoryImp implements TareaRepository {
             return null;
         }
     }
-
+    @Override
+    public List<TareaModel> getAllByUsuario(Integer id_usuario) {
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery("SELECT * FROM tarea WHERE id_usuario = :id_usuario")
+                    .addParameter("id_usuario", id_usuario)
+                    .executeAndFetch(TareaModel.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
     @Override
     public List<TareaModel> buscarTareas(String estado, String palabraClave) {
         try (Connection conn = sql2o.open()) {

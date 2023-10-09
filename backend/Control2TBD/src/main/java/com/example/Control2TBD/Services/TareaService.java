@@ -36,6 +36,10 @@ public class TareaService {
     public List<TareaModel> getAllTareas() {
         return tareaRepository.getAll();
     }
+    @GetMapping("/tarea/{id_usuario}")
+    public List<TareaModel> getAllTareasUsuario(@PathVariable Integer id_usuario) {
+        return tareaRepository.getAllByUsuario(id_usuario);
+    }
     // delete
     @DeleteMapping("/tarea/{id_tarea}")
     public void borrar(@PathVariable Integer id_tarea) {
