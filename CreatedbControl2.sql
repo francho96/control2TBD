@@ -13,7 +13,7 @@ CREATE TABLE tarea (
     id_tarea SERIAL PRIMARY KEY,
     id_usuario BIGINT REFERENCES usuario (id),
     titulo VARCHAR(50),
-    descripcion VARCHAR(50),
+    descripcion VARCHAR(500),
     fecha_vencimiento DATE,
     estado VARCHAR(50)
 );
