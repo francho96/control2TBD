@@ -1,4 +1,4 @@
 package com.example.Control2TBD.Repositories;
 
-public class TareaRepository {
+public interface TareaRepository {
 }
