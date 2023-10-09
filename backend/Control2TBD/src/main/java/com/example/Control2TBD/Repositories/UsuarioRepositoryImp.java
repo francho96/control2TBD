@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 
 @Repository
-public class UsuarioRepositoryImp {
+public class UsuarioRepositoryImp implements UsuarioRepository {
     @Autowired
     private Sql2o sql2o;
 }
