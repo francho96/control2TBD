@@ -1,59 +1,50 @@
 package com.example.Control2TBD.Models;
 
 
-import jakarta.persistence.*;
+
 
 import java.util.Date;
 
-@Entity
-@Table(name = "tarea")
 public class TareaModel {
+
     //ATRIBUTOS
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tarea")
-    private Long id;
+    private Integer id_tarea;
+    private Integer id_usuario;
 
-    @Column(name = "titulo")
     private String titulo;
-
-    @Column(name = "descripcion")
     private String descripcion;
-
-    @Column(name = "fecha_incio")
     private Date fecha_inicio;
 
-    @Column(name = "fecha_vencimiento")
     private Date fecha_vencimiento;
-
-    /* Aca hay que decidir:
-    * podríamos usar un bool, pero sería muy dicotómico
-    * podríamos también tener ints que representen los estados
-    * o también un String con el nombre del estado:
-    * "tarea-asignada", "tarea-pendiente", etc; lo que estimen mejor*/
-    @Column(name = "estado_tarea")
-    private int estado;
+    private String estado;
 
     //CONSTRUCTOR
     public TareaModel(){}
 
-    public TareaModel(Long id, String titulo, String descripcion, Date fecha_inicio, Date fecha_vencimiento, int estado) {
-        this.id = id;
+    public TareaModel(Integer id_tarea, Integer id_usuario, String titulo, String descripcion, Date fecha_inicio, Date fecha_vencimiento, String estado) {
+        this.id_tarea = id_tarea;
+        this.id_usuario = id_usuario;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha_inicio = fecha_inicio;
         this.fecha_vencimiento = fecha_vencimiento;
         this.estado = estado;
     }
-
-    //GETTERS Y SETTERS
-
-    public Long getId() {
-        return id;
+//GETTERS Y SETTERS
+    public Integer getId_tarea() {
+    return id_tarea;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_tarea(Integer id_tarea) {
+        this.id_tarea = id_tarea;
+    }
+
+    public Integer getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getTitulo() {
@@ -88,11 +79,11 @@ public class TareaModel {
         this.fecha_vencimiento = fecha_vencimiento;
     }
 
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 }
