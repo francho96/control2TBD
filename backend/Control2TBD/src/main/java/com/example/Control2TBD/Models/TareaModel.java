@@ -13,7 +13,6 @@ public class TareaModel {
 
     private String titulo;
     private String descripcion;
-    private Date fecha_inicio;
 
     private Date fecha_vencimiento;
     private String estado;
@@ -26,7 +25,6 @@ public class TareaModel {
         this.id_usuario = id_usuario;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.fecha_inicio = fecha_inicio;
         this.fecha_vencimiento = fecha_vencimiento;
         this.estado = estado;
     }
@@ -62,14 +60,7 @@ public class TareaModel {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public Date getFecha_inicio() {
-        return fecha_inicio;
-    }
-
-    public void setFecha_inicio(Date fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
-    }
+    
 
     public Date getFecha_vencimiento() {
         return fecha_vencimiento;
