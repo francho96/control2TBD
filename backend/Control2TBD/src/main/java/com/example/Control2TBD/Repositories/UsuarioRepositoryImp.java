@@ -7,6 +7,8 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.List;
+
 @Repository
 public class UsuarioRepositoryImp implements UsuarioRepository {
     @Autowired

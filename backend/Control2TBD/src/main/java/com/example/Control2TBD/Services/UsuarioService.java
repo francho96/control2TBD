@@ -11,7 +11,7 @@ import java.util.List;
 public class UsuarioService {
     private final com.example.Control2TBD.Repositories.UsuarioRepository usuarioRepository;
 
-    public UsuarioService(TareaRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
