@@ -76,7 +76,7 @@ export default {
         "password": this.password
       };
       try {
-        const respuesta = await axios.post(import.meta.env.VITE_BASE_URL + "api/usuarios/login", usuario);
+        const respuesta = await axios.get(import.meta.env.VITE_BASE_URL + `/usuario/login/${this.username}/${this.password}`);
         //Para redireccionar hacia el sector de tareas
         if(respuesta.data){
           localStorage.setItem("login", JSON.stringify(this.username));
