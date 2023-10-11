@@ -79,7 +79,15 @@ export default {
         const respuesta = await axios.get(import.meta.env.VITE_BASE_URL + `/usuario/login/${this.username}/${this.password}`);
         //Para redireccionar hacia el sector de tareas
         if(respuesta.data){
+          if(respuesta.data.length === 0){
+            alert("Credenciales no validas")
+            return;
+          }
           localStorage.setItem("login", JSON.stringify(this.username));
+          console.log(respuesta.data[0]);
+          console.log(respuesta.data);
+          console.log(respuesta.data[0].id)
+          localStorage.setItem("idUsuario", JSON.stringify(respuesta.data[0].id));
           redireccionarATareas();
         } else {
           alert("¡Credenciales no validas!");

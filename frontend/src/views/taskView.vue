@@ -6,29 +6,38 @@ import SideBar from "../components/SideBar.vue"
 <script>
 import axios from 'axios';
 
+function generarNumeroAleatorio() {
+  return Math.floor(Math.random() * 10000001);
+}
+
 export default {
   data() {
     return {
-      tipo: "",
       descripcion: "",
-      username: null
+      username: null,
+      id: JSON.parse(localStorage.getItem("idUsuario")),
+      date: null,
     }
   },
   methods: {
     getLogin(){
       this.username = JSON.parse(localStorage.getItem("login"))
+      this.id = JSON.parse(localStorage.getItem("idUsuario"))
     },
+    
     mounted() {
       this.getLogin()
-    }
-    /*
+    },
     async crearTarea(){
+      console.log("aa")
       // Enviar datos a backend
       const auxObject = {
-        id_tarea: this.tipo, aleatorio
-        id_usuario: this.descripcion, 
-        titulo: "anonimo",
-        descripcion: 
+        id_tarea: generarNumeroAleatorio(),
+        id_usuario: this.id,
+        titulo: this.descripcion,
+        descripcion: this.descripcion,
+        fecha_vencimiento: this.date,
+        estado: "pendiente",
       };
 
       try {
@@ -39,7 +48,6 @@ export default {
         alert("Hay problemas para registrar la tarea");
       }
     },
-    */
   }
 }
 </script>
@@ -61,9 +69,9 @@ export default {
         <div class="input">
           <h2 style="margin: 10px 0px 10px 0px;">Agregar Tarea:</h2>
           <div style="display: flex">
-            <input class="description" maxlength=30 v-model="descripcion" placeholder="Ingrese motivo" />
-            <input class="date" type="date" style="width: 50px; height: 46px;" v-model="fechaVencimiento" placeholder=""/>
-            <button class="sessionButton" style="width: 50px; height: 50px; border-radius: 0px 6px 6px 0px;" @click="enviarSol">+</button>
+            <input class="description" maxlength=30 v-model="descripcion" placeholder="Ingrese tarea" />
+            <input class="date" type="date" style="width: 50px; height: 46px;" v-model="date" placeholder=""/>
+            <button class="sessionButton" style="width: 50px; height: 50px; border-radius: 0px 6px 6px 0px;" @click="crearTarea">+</button>
           </div>
           
         </div>
