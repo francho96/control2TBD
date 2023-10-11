@@ -17,6 +17,7 @@ export default {
       username: null,
       id: JSON.parse(localStorage.getItem("idUsuario")),
       date: null,
+      tasks: [],
     }
   },
   methods: {
@@ -25,11 +26,7 @@ export default {
       this.id = JSON.parse(localStorage.getItem("idUsuario"))
     },
     
-    mounted() {
-      this.getLogin()
-    },
     async crearTarea(){
-      console.log("aa")
       // Enviar datos a backend
       const auxObject = {
         id_tarea: generarNumeroAleatorio(),
@@ -48,6 +45,19 @@ export default {
         alert("Hay problemas para registrar la tarea");
       }
     },
+    async getTareas(){
+
+      try {
+        const res = await axios(import.meta.env.VITE_BASE_URL + `/tarea/${this.id}`)
+        this.tasks = res.data;
+      } catch (error){
+        alert("error en conectar al servidor")
+      }
+    },
+  },
+  mounted() {
+    this.getLogin();
+    this.getTareas();
   }
 }
 </script>
@@ -64,7 +74,24 @@ export default {
       <div class="card" style="margin-top: 20px;">
         <div> 
           <h2 style="margin-bottom: 10px;"> Tareas:</h2>
-          <div>aún no hay ninguna tarea</div>
+          <div v-if="this.tasks.length === 0">
+            <div>aún no hay ninguna tarea</div>
+          </div>
+          <div v-else>
+            <table>
+            <tr>
+              <th>Tarea</th>
+              <th>Estado</th>
+              <th>Vencimiento</th>
+            </tr>
+            <tr v-for="task in tasks">
+              <td>{{ task.titulo }}</td>
+              <td>{{ task.fecha_vencimiento }}</td>
+              <td>{{ task.estado }}</td>
+            </tr>
+            </table>
+          </div>
+         
         </div>
         <div class="input">
           <h2 style="margin: 10px 0px 10px 0px;">Agregar Tarea:</h2>
