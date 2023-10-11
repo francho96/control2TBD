@@ -91,7 +91,6 @@ export default {
     },
     handleChange() {
       this.register = !this.register
-      console.log(this.register)
     },
 
 
@@ -111,8 +110,8 @@ export default {
           }
           try {
             const registro = await axios.post(import.meta.env.VITE_BASE_URL + "/usuario", nuevo_usuario);
-            console.log(registro);
-            alert("Usuario creado con exito")
+            alert("Usuario creado con exito");
+            this.register = !this.register;
           } catch(error){
             alert("No se ha logrado llevar a cabo el registro")
           }
