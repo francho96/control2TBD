@@ -10,25 +10,33 @@ export default {
   data() {
     return {
       tipo: "",
-      descripcion: ""
+      descripcion: "",
+      username: null
     }
   },
   methods: {
+    getLogin(){
+      this.username = JSON.parse(localStorage.getItem("login"))
+    },
+    mounted() {
+      this.getLogin()
+    }
     /*
-    async enviarSol(){
+    async crearTarea(){
       // Enviar datos a backend
-      const ticket = {
-        "tipo": this.tipo,
-        "description": this.descripcion,
-        "nombre_solicitante": "anonimo"
+      const auxObject = {
+        id_tarea: this.tipo, aleatorio
+        id_usuario: this.descripcion, 
+        titulo: "anonimo",
+        descripcion: 
       };
 
       try {
-        const respuesta = await axios.post(import.meta.env.VITE_BASE_URL + "api/tickets", ticket);
+        const respuesta = await axios.post(import.meta.env.VITE_BASE_URL + "/tarea", auxObject);
         console.log(respuesta.data); 
-        alert("La solicitud se ha registrado correctamente");
+        alert("La tarea se ha registrado correctamente");
       }catch(error){
-        alert("Hay problemas para registrar la solicitud");
+        alert("Hay problemas para registrar la tarea");
       }
     },
     */
@@ -54,7 +62,7 @@ export default {
           <h2 style="margin: 10px 0px 10px 0px;">Agregar Tarea:</h2>
           <div style="display: flex">
             <input class="description" maxlength=30 v-model="descripcion" placeholder="Ingrese motivo" />
-            <input class="date" type="date" v-model="fechaVencimiento" placeholder="Ingrese fecha de vencimiento"/>
+            <input class="date" type="date" style="width: 50px; height: 46px;" v-model="fechaVencimiento" placeholder=""/>
             <button class="sessionButton" style="width: 50px; height: 50px; border-radius: 0px 6px 6px 0px;" @click="enviarSol">+</button>
           </div>
           
