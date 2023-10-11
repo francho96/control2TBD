@@ -42,12 +42,12 @@ function redireccionarATareas() {
   window.location.href = '/tasks';
 }
 
-function isEmail(email: string): boolean{
+function isEmail(email){
   const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
   return regex.test(email);
 }
 
-function quitarArroba(email: string): string{
+function quitarArroba(email){
   const aux = email.split("@");
   return aux[0];
 }
@@ -104,18 +104,18 @@ export default {
       if(this.passwordRegister == this.passwordRegisterConfirmation){
         if(this.usernameRegister != "" & this.passwordRegister != ""){
           const nuevo_usuario = {
-          "nombre_usuario": quitarArroba(this.usernameRegister);
-          "email": this.usernameRegister,
-          "password": this.passwordRegister,
-          "id": generarNumeroAleatorio(),
-        }
-        try {
-          const registro = await axios.post(import.meta.env.VITE_BASE_URL + "/usuario", nuevo_usuario);
-          console.log(registro);
-          alert("Usuario creado con exito")
-        } catch(error){
-          alert("No se ha logrado llevar a cabo el registro")
-        }
+            nombre_usuario: quitarArroba(this.usernameRegister),
+            email: this.usernameRegister,
+            password: this.passwordRegister,
+            id: generarNumeroAleatorio(),
+          }
+          try {
+            const registro = await axios.post(import.meta.env.VITE_BASE_URL + "/usuario", nuevo_usuario);
+            console.log(registro);
+            alert("Usuario creado con exito")
+          } catch(error){
+            alert("No se ha logrado llevar a cabo el registro")
+          }
         }
         else{alert("No hay datos ingresados")}
       }
