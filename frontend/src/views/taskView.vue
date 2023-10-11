@@ -54,6 +54,7 @@ export default {
           <h2 style="margin: 10px 0px 10px 0px;">Agregar Tarea:</h2>
           <div style="display: flex">
             <input class="description" maxlength=30 v-model="descripcion" placeholder="Ingrese motivo" />
+            <input class="date" type="date" v-model="fechaVencimiento" placeholder="Ingrese fecha de vencimiento"/>
             <button class="sessionButton" style="width: 50px; height: 50px; border-radius: 0px 6px 6px 0px;" @click="enviarSol">+</button>
           </div>
           
